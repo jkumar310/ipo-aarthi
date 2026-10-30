@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#321006">
+<title>IPO Aarthi — Your Virtual Temple</title>
+<style>
+:root{--gold:#f6c75e;--gold2:#ffdf91;--wine:#260b08;--wine2:#49170d;--cream:#fff0d0;--panel:#170907;--line:#9d6a2e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#160806;color:var(--cream);font-family:Georgia,"Times New Roman",serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 50% 0%,#743016 0,transparent 54%),repeating-linear-gradient(90deg,transparent 0 70px,#d79b3b08 71px 73px)}
+button,input,textarea{font:inherit}button{cursor:pointer}
+.topbar{position:relative;z-index:2;text-align:center;padding:16px 12px 12px;background:linear-gradient(#170705,#321006cc);border-bottom:1px solid #a87537}
+.om{font-size:24px;color:var(--gold)}.brand{font-size:clamp(30px,5vw,49px);font-weight:bold;letter-spacing:3px;color:var(--gold2);text-shadow:0 3px 0 #67230d,0 0 18px #ffb52f}.tag{font:11px Arial;letter-spacing:3px;color:#e8c48b;text-transform:uppercase;margin-top:4px}
+.layout{position:relative;z-index:1;max-width:1500px;margin:18px auto;padding:0 14px;display:grid;grid-template-columns:270px minmax(300px,1fr) 300px;gap:14px;align-items:stretch}
+.panel{background:linear-gradient(145deg,#2a100bF2,#130806F5);border:1px solid #bd8a43;border-radius:16px;box-shadow:0 12px 35px #0008,inset 0 0 20px #d89d2810;overflow:hidden}
+.panel-head{padding:15px 15px 11px;border-bottom:1px solid #815323;color:var(--gold2);font-size:19px;text-align:center}
+.gallery{padding:12px}.search{width:100%;padding:10px 12px;border-radius:9px;background:#fff1d8;color:#351309;border:1px solid #d8ad63;margin-bottom:10px}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.filter{font:12px Arial;border:1px solid #8b5b2b;background:#34140d;color:#f8dfb1;border-radius:18px;padding:7px 9px}.filter.active{background:linear-gradient(#f6d27b,#d78a2b);color:#351006;border-color:#ffe39b}
+.gods{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-height:570px;overflow:auto;padding:2px}
+.god{border:1px solid #79502a;border-radius:10px;background:#35130c;color:#ffe9c0;padding:8px 5px;min-width:0}.god.active{border:2px solid var(--gold);background:#683018;box-shadow:0 0 12px #f8c55b55}.god .pic{display:grid;place-items:center;height:65px;font-size:39px;background:radial-gradient(circle,#8c481f,#35140d 70%);border-radius:7px;margin-bottom:5px}.god strong{display:block;font-size:13px}.god small{font:10px Arial;color:#d8b98a}
+.center{min-width:0}.shrine{position:relative;min-height:600px;border:2px solid #bd8a43;border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,#9a4b1b 0,#59200f 43%,#210a07 100%);box-shadow:inset 0 0 70px #090201,0 12px 35px #0009}
+.shrine:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 8%,#f7ca6b13 8.2% 8.5%,transparent 8.7% 16%);pointer-events:none}
+.pillar{position:absolute;top:0;bottom:0;width:28px;background:repeating-linear-gradient(180deg,#f4c66b 0 7px,#6b2912 7px 16px,#c18431 16px 22px);box-shadow:0 0 18px #120603}.pillar.left{left:0}.pillar.right{right:0}
+.arch{position:absolute;top:18px;left:8%;right:8%;height:48%;border:7px ridge #d9a84d;border-bottom:0;border-radius:50% 50% 0 0;box-shadow:0 0 20px #ffcf68aa}
+.hangings{position:absolute;top:0;left:13%;right:13%;display:flex;justify-content:space-around;color:#ffda79;font-size:24px}
+.temple-title{position:relative;text-align:center;padding:20px 10px 0;color:#ffdf91;font-size:12px;letter-spacing:2px}
+.deity-stage{position:relative;z-index:2;text-align:center;margin:45px auto 0;width:min(92%,500px);height:330px;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.deity-halo{position:absolute;width:265px;height:265px;border:5px double #f6c65f;border-radius:50%;box-shadow:0 0 35px #ffbd4c66,inset 0 0 28px #ffbf4d44;background:radial-gradient(circle,#ffd98020,transparent 68%);animation:halo 8s linear infinite}
+@keyframes halo{to{transform:rotate(360deg)}}
+.deity-icon{position:relative;font-size:clamp(100px,13vw,160px);line-height:1.1;filter:drop-shadow(0 10px 10px #160502);z-index:2}
+.deity-name{position:relative;color:#ffe09a;font-size:25px;text-shadow:0 2px 5px #240900;z-index:2}.deity-bless{position:relative;font-size:12px;color:#f5d8a5;margin-top:5px;z-index:2}
+.vahana{position:absolute;z-index:4;bottom:17px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;min-width:155px;justify-content:center}
+.vahana-animal{font-size:54px;filter:drop-shadow(0 5px 5px #170500);transform-origin:50% 85%;animation:nod 2.8s ease-in-out infinite}
+.vahana-label{font:11px Arial;color:#ffdda0;background:#2a100dcc;border:1px solid #bd8a43;border-radius:20px;padding:5px 8px}
+@keyframes nod{0%,72%,100%{transform:rotate(0) translateY(0)}78%{transform:rotate(-9deg) translateY(-3px)}84%{transform:rotate(8deg) translateY(-2px)}90%{transform:rotate(-4deg)}}
+.flower{position:absolute;z-index:5;left:50%;bottom:65px;font-size:20px;pointer-events:none;animation:flowerFly 1.7s ease-out forwards}
+@keyframes flowerFly{0%{transform:translate(0,0) scale(.5) rotate(0);opacity:0}12%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1.2) rotate(300deg);opacity:0}}
+.lamps{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:space-evenly;font-size:24px;filter:drop-shadow(0 0 8px #ffbd44)}
+.controls-bottom{position:relative;z-index:6;text-align:center;padding:16px 10px 18px;background:linear-gradient(transparent,#170805cc)}
+.plate-zone{height:130px;display:flex;align-items:center;justify-content:center}
+.plate{width:108px;height:108px;border-radius:50%;border:8px double #f5c75f;background:radial-gradient(circle,#a9511d 0 42%,#f4c35b 44% 52%,#64250e 54%);display:grid;place-items:center;font-size:42px;box-shadow:0 0 24px #ffb94e99;touch-action:none;user-select:none;cursor:grab}
+.plate.auto{animation:rotate 2.4s linear infinite}@keyframes rotate{to{transform:rotate(360deg)}}
+.btnrow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.btn{border-radius:24px;padding:10px 15px;border:1px solid #b7813c;background:#3c170d;color:#ffe6b4;font: bold 13px Arial}.btn.primary{background:linear-gradient(#ffe08c,#d98a2b);color:#391208;border-color:#ffe6a4}.btn:disabled{opacity:.45;cursor:not-allowed}
+.status{min-height:22px;color:#ffdb83;font:13px Arial;margin-top:10px}
+.right-panel{padding-bottom:14px}.right-content{padding:14px}.right-content label{display:block;font:12px Arial;color:#f5d9a4;margin:11px 0 6px}.right-content input,.right-content textarea{width:100%;padding:11px;border-radius:8px;border:1px solid #b78547;background:#fff0d6;color:#32120a;font:14px Arial}.right-content textarea{min-height:80px;resize:vertical}
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.mode{border:1px solid #a97839;background:#2d100a;color:#ffdda0;border-radius:12px;padding:12px 7px;font:12px Arial}.mode span{display:block;font-size:25px;margin-bottom:5px}.mode.active{border:2px solid #ffd66f;box-shadow:0 0 13px #ffcb5d55;background:#613019}
+.toggle-row{display:flex;justify-content:space-between;align-items:center;font:13px Arial;padding:9px 0;border-bottom:1px solid #704522}.switch{accent-color:#e8b34f;width:18px;height:18px}
+.settings{margin:12px 14px 0;padding:12px;border:1px solid #78502a;border-radius:10px;background:#210c08}.settings summary{color:#f8d58c;cursor:pointer;font-size:14px}.settings p{font:11px Arial;color:#d6b78a;line-height:1.5}
+.share-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.share-row .btn{padding:10px 7px}
+.footer{text-align:center;color:#c6a477;font:11px Arial;line-height:1.6;padding:18px 10px 30px;position:relative;z-index:1}
+.hidden{display:none!important}
+@media(max-width:1050px){.layout{grid-template-columns:235px minmax(280px,1fr)}.right-panel{grid-column:1/-1}.right-content{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.right-content .full{grid-column:1/-1}}
+@media(max-width:700px){.layout{grid-template-columns:1fr;margin-top:10px;padding:0 9px}.gallery-panel{order:2}.center{order:1}.right-panel{order:3;grid-column:auto}.shrine{min-height:540px}.deity-stage{margin-top:35px;height:300px}.right-content{display:block}.gods{grid-template-columns:repeat(3,1fr);max-height:300px}.god .pic{height:53px;font-size:31px}.panel-head{font-size:17px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="om">ॐ</div><div class="brand">IPO AARTHI</div><div class="tag">A little prayer • A lot of hope • A virtual temple</div></header>
+<main class="layout">
+<aside class="panel gallery-panel">
+ <div class="panel-head">🪷 Choose Your Deity</div>
+ <div class="gallery">
+  <input id="search" class="search" placeholder="⌕  Search Gods..." aria-label="Search deities">
+  <div class="filters" id="filters">
+   <button class="filter active" data-cat="All">All Gods</button><button class="filter" data-cat="Popular">Popular</button><button class="filter" data-cat="South India">South India</button><button class="filter" data-cat="North India">North India</button><button class="filter" data-cat="Goddesses">Goddesses</button><button class="filter" data-cat="Other">Other</button>
+  </div>
+  <div class="gods" id="godList"></div>
+ </div>
+</aside>
+<section class="center">
+ <div class="shrine">
+  <div class="pillar left"></div><div class="pillar right"></div><div class="arch"></div>
+  <div class="hangings">✿　🔔　✿　🔔　✿　🔔　✿</div>
+  <div class="temple-title">✦ ஸ்ரீ விநாயகாய நமஹ ✦ &nbsp; • &nbsp; DIVINE BLESSINGS &nbsp; • &nbsp; ✦</div>
+  <div class="deity-stage">
+   <div class="deity-halo"></div>
+   <div class="deity-icon" id="deityIcon">🐘</div>
+   <div class="deity-name" id="deityName">Lord Ganesha</div>
+   <div class="deity-bless" id="deityBless">வெற்றி உண்டாகட்டும் • May your efforts be blessed</div>
+   <div class="vahana"><span class="vahana-animal" id="vahanaIcon">🐭</span><span class="vahana-label" id="vahanaName">Mushika • praying</span></div>
+  </div>
+  <div class="lamps"><span>🪔</span><span>🌼</span><span>🪔</span><span>🌺</span><span>🪔</span></div>
+  <div class="controls-bottom">
+   <div class="plate-zone"><div class="plate" id="plate" aria-label="Aarthi plate" role="button" tabindex="0">🪔</div></div>
+   <div class="btnrow"><button class="btn" id="manualBtn">✋ Do Aarthi Yourself</button><button class="btn primary" id="autoBtn">▶ Automatic Aarthi</button><button class="btn" id="bellBtn">🔔 Bell</button><button class="btn" id="stopBtn">Ⅱ Stop</button></div>
+   <div class="status" id="status" aria-live="polite">Choose a deity and begin your Aarthi.</div>
+  </div>
+ </div>
+</section>
+<aside class="panel right-panel">
+ <div class="panel-head"><div style="font-size:25px;color:#f5c45b">ॐ</div>Your IPO Aarthi</div>
+ <div class="right-content">
+  <div class="full"><label for="ipo">IPO Name</label><input id="ipo" maxlength="90" placeholder="e.g. BLS Polymers IPO"></div>
+  <div class="full"><label for="wish">Your Prayer / Wish</label><textarea id="wish" maxlength="260" placeholder="Please bless me with wisdom, patience and a positive outcome... 🙏"></textarea></div>
+  <div class="full"><label>Aarthi Mode</label>
+   <div class="mode-grid"><button class="mode active" id="manualMode"><span>🖐️</span><b>Do Aarthi Yourself</b><br><small>Touch & move the plate</small></button><button class="mode" id="autoMode"><span>🪔</span><b>Automatic Aarthi</b><br><small>Watch the plate rotate</small></button></div>
+  </div>
+  <div class="full">
+   <div class="toggle-row"><span>🎵 Temple Music</span><input class="switch" type="checkbox" id="musicToggle"></div>
+   <div class="toggle-row"><span>🔔 Bell Sound</span><input class="switch" type="checkbox" id="bellToggle" checked></div>
+   <div class="toggle-row"><span>🌸 Vahana Flower Offering</span><input class="switch" type="checkbox" id="flowerToggle" checked></div>
+   <div class="toggle-row"><span>🐾 Cute Vahana Actions</span><input class="switch" type="checkbox" id="vahanaToggle" checked></div>
+  </div>
+  <div class="full share-row"><button class="btn primary" id="shareBtn">🟢 WhatsApp Share</button><button class="btn" id="downloadBtn">⬇ Blessing Card</button></div>
+  <details class="settings full"><summary>⚙ Aarthi Settings</summary><p>Choose a deity, enter your IPO and prayer, then select manual or automatic Aarthi. In manual mode, drag the plate in a circular movement. The vahana animation and flower offerings can be switched on or off above.</p></details>
+ </div>
+</aside>
+</main>
+<footer class="footer">ॐ शुभमस्तु • May auspiciousness be with you<br>This is a devotional entertainment experience, not financial advice. Aarthi cannot influence IPO allotment, listing prices or investment returns.<br>Deity artwork in this starter version uses symbolic illustrations (emoji). Add photographs only when you have permission to use them.</footer>
+<script>
+const deities=[
+{name:"Lord Ganesha",short:"Ganesha",icon:"🐘",vahana:"🐭",vname:"Mushika",cat:["Popular","South India"],bless:"வெற்றி உண்டாகட்டும் • May your efforts be blessed"},
+{name:"Lord Murugan",short:"Murugan",icon:"🪷",vahana:"🦚",vname:"Peacock",cat:["Popular","South India"],bless:"வேல் முருகா • Courage and clarity"},
+{name:"Lord Shiva",short:"Shiva",icon:"🔱",vahana:"🐂",vname:"Nandi",cat:["Popular","South India","North India"],bless:"ஓம் நமசிவாய • Peace and strength"},
+{name:"Goddess Amman",short:"Amman",icon:"🌺",vahana:"🦁",vname:"Lion",cat:["Popular","South India","Goddesses"],bless:"அம்மன் அருள் • May you be protected"},
+{name:"Lord Hanuman",short:"Hanuman",icon:"🙏",vahana:"🐒",vname:"Devotee monkey",cat:["Popular","North India"],bless:"Jai Hanuman • Strength and devotion"},
+{name:"Lord Venkateswara",short:"Balaji",icon:"🛕",vahana:"🦅",vname:"Garuda",cat:["Popular","South India"],bless:"Govinda Govinda • May you find wisdom"},
+{name:"Goddess Lakshmi",short:"Lakshmi",icon:"🪷",vahana:"🦉",vname:"Owl",cat:["Popular","Goddesses","North India"],bless:"Om Shreem Mahalakshmiyei Namaha"},
+{name:"Goddess Saraswati",short:"Saraswati",icon:"📿",vahana:"🦢",vname:"Swan",cat:["Goddesses","North India"],bless:"Knowledge, learning and clarity"},
+{name:"Goddess Durga",short:"Durga",icon:"🌸",vahana:"🦁",vname:"Lion",cat:["Popular","Goddesses","North India"],bless:"May courage and protection be with you"},
+{name:"Lord Krishna",short:"Krishna",icon:"🦚",vahana:"🐄",vname:"Cow",cat:["Popular","North India"],bless:"Hare Krishna • Joy and compassion"},
+{name:"Lord Rama",short:"Rama",icon:"🏹",vahana:"🐒",vname:"Hanuman devotee",cat:["North India"],bless:"Jai Shri Ram • Dharma and courage"},
+{name:"Lord Ayyappa",short:"Ayyappa",icon:"🙏",vahana:"🐅",vname:"Tiger",cat:["South India"],bless:"Swamiye Saranam Ayyappa"},
+{name:"Lord Jagannath",short:"Jagannath",icon:"🛕",vahana:"🐦",vname:"Garuda",cat:["North India","Other"],bless:"Jai Jagannath"},
+{name:"Goddess Meenakshi",short:"Meenakshi",icon:"🌺",vahana:"🦜",vname:"Parrot",cat:["South India","Goddesses"],bless:"May grace and kindness guide you"},
+{name:"Lord Nataraja",short:"Nataraja",icon:"💃",vahana:"🐂",vname:"Nandi",cat:["South India"],bless:"May harmony fill your path"},
+{name:"Shirdi Sai Baba",short:"Sai Baba",icon:"🕉️",vahana:"🐕",vname:"Faithful dog",cat:["Other"],bless:"Shraddha and Saburi • Faith and patience"},
+{name:"Lord Dattatreya",short:"Dattatreya",icon:"🕉️",vahana:"🐄",vname:"Cow",cat:["Other"],bless:"May wisdom guide your decisions"},
+{name:"Panduranga Vitthal",short:"Vitthal",icon:"🙏",vahana:"🐄",vname:"Cow",cat:["Other"],bless:"Vitthal Vitthal • Devotion and joy"}
+];
+let selected=deities[0],category="All",audioCtx=null,autoTimer=null,musicTimer=null,manual=false,dragging=false,lastAngle=0,rotation=0;
+const $=id=>document.getElementById(id);
+function render(){
+ const q=$("search").value.toLowerCase();
+ $("godList").innerHTML="";
+ deities.filter(d=>(category==="All"||d.cat.includes(category))&&(d.name.toLowerCase().includes(q)||d.vname.toLowerCase().includes(q))).forEach(d=>{
+  const b=document.createElement("button");b.className="god"+(d===selected?" active":"");
+  b.innerHTML=`<div class="pic">${d.icon}</div><strong>${d.short}</strong><small>Vahana: ${d.vname}</small>`;
+  b.onclick=()=>choose(d);$("godList").appendChild(b);
+ });
+}
+function choose(d){selected=d;$("deityIcon").textContent=d.icon;$("deityName").textContent=d.name;$("deityBless").textContent=d.bless;$("vahanaIcon").textContent=d.vahana;$("vahanaName").textContent=d.vname+" • praying";render();sayStatus(d.name+" selected. "+d.vname+" is praying nearby.");}
+$("filters").onclick=e=>{let b=e.target.closest(".filter");if(!b)return;category=b.dataset.cat;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));render()};
+$("search").oninput=render;render();
+function ctx(){let C=window.AudioContext||window.webkitAudioContext;if(!C)return null;if(!audioCtx)audioCtx=new C();if(audioCtx.state==="suspended")audioCtx.resume();return audioCtx}
+function note(f,d=.3,v=.05,delay=0){let c=ctx();if(!c)return;let o=c.createOscillator(),g=c.createGain(),t=c.currentTime+delay;o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+d+.04)}
+function ring(){if($("bellToggle").checked){note(880,1.2,.12);note(1320,1.3,.06,.04);note(1760,1,.025,.08)}sayStatus("🔔 Temple bell ringing…")}
+function sayStatus(s){$("status").textContent=s}
+function setMode(isAuto){manual=isAuto?false:true;$("manualMode").classList.toggle("active",!isAuto);$("autoMode").classList.toggle("active",isAuto);$("manualBtn").classList.toggle("primary",!isAuto);$("autoBtn").classList.toggle("primary",isAuto);if(isAuto)startAuto();else{stopAuto();sayStatus("Manual mode: drag the Aarthi plate in a circular motion.");}}
+function startAuto(){manual=false;stopAuto();$("plate").classList.add("auto");if($("bellToggle").checked)ring();autoTimer=setInterval(()=>{note(620,.16,.02);if($("flowerToggle").checked&&$("vahanaToggle").checked)throwFlowers()},2400);sayStatus("🪔 Automatic Aarthi in progress…");}
+function stopAuto(){clearInterval(autoTimer);autoTimer=null;$("plate").classList.remove("auto");}
+function stopAll(){stopAuto();dragging=false;sayStatus("Aarthi paused. May you be blessed! 🙏")}
+$("manualBtn").onclick=()=>setMode(false);$("autoBtn").onclick=()=>setMode(true);$("manualMode").onclick=()=>setMode(false);$("autoMode").onclick=()=>setMode(true);$("stopBtn").onclick=stopAll;$("bellBtn").onclick=ring;
+function throwFlowers(){if(!$("flowerToggle").checked||!$("vahanaToggle").checked)return;for(let i=0;i<5;i++){let f=document.createElement("span");f.className="flower";f.textContent=["🌸","🌼","🌺","🌻"][Math.floor(Math.random()*4)];f.style.setProperty("--dx",(Math.random()*260-130)+"px");f.style.setProperty("--dy",(-100-Math.random()*150)+"px");f.style.left=(42+Math.random()*16)+"%";$("deity-stage");document.querySelector(".deity-stage").appendChild(f);setTimeout(()=>f.remove(),1800)}}
+$("vahanaIcon").addEventListener("click",()=>{if(!$("vahanaToggle").checked)return;let a=$("vahanaIcon");a.animate([{transform:"rotate(0) translateY(0)"},{transform:"rotate(-18deg) translateY(-9px)"},{transform:"rotate(18deg) translateY(-7px)"},{transform:"rotate(0)"}],{duration:650});throwFlowers();sayStatus(selected.vname+" is offering flowers! 🌸");});
+$("plate").addEventListener("pointerdown",e=>{if(!manual)return;dragging=true;stopAuto();$("plate").setPointerCapture(e.pointerId);let r=$("plate").getBoundingClientRect();lastAngle=Math.atan2(e.clientY-r.top-r.height/2,e.clientX-r.left-r.width/2);rotation=0;sayStatus("You are offering Aarthi… 🙏")});
+$("plate").addEventListener("pointermove",e=>{if(!dragging||!manual)return;let r=$("plate").getBoundingClientRect(),a=Math.atan2(e.clientY-r.top-r.height/2,e.clientX-r.left-r.width/2),delta=a-lastAngle;if(delta>Math.PI)delta-=Math.PI*2;if(delta< -Math.PI)delta+=Math.PI*2;rotation+=delta;lastAngle=a;$("plate").style.transform=`rotate(${rotation*180/Math.PI}deg)`});
+function endDrag(){if(!dragging)return;dragging=false;if($("vahanaToggle").checked&&$("flowerToggle").checked)throwFlowers();sayStatus("Beautiful Aarthi! "+selected.vname+" offers flowers with you. 🌸")}
+$("plate").addEventListener("pointerup",endDrag);$("plate").addEventListener("pointercancel",endDrag);
+$("plate").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();if(manual){rotation+=Math.PI/2;$("plate").style.transform=`rotate(${rotation*180/Math.PI}deg)`}else startAuto()}});
+$("musicToggle").onchange=()=>{clearInterval(musicTimer);if($("musicToggle").checked){ctx();musicTimer=setInterval(()=>{note(523,.35,.018);note(659,.35,.018,.18);note(784,.45,.018,.36)},1500);sayStatus("Soft devotional-style tones enabled.");}else sayStatus("Temple music turned off.");};
+function message(){return `🙏 My IPO Aarthi 🙏\\n\\nI offered Aarthi to ${selected.name}.\\nIPO: ${$("ipo").value.trim()||"My IPO application"}\\nMy prayer: ${$("wish").value.trim()||"May I be blessed with wisdom and a positive outcome."}\\n\\nMay there be good fortune and patience. 🪔\\nIPO Aarthi`;}
+$("shareBtn").onclick=()=>window.open("https://wa.me/?text="+encodeURIComponent(message()),"_blank","noopener");
+$("downloadBtn").onclick=()=>{let c=document.createElement("canvas");c.width=1000;c.height=600;let x=c.getContext("2d"),g=x.createLinearGradient(0,0,1000,600);g.addColorStop(0,"#6c260e");g.addColorStop(1,"#1b0805");x.fillStyle=g;x.fillRect(0,0,1000,600);x.strokeStyle="#f5cb70";x.lineWidth=10;x.strokeRect(22,22,956,556);x.textAlign="center";x.fillStyle="#ffdf91";x.font="bold 52px Georgia";x.fillText("ॐ  IPO AARTHI  ॐ",500,110);x.font="120px serif";x.fillText(selected.icon,500,270);x.font="bold 34px Georgia";x.fillText(selected.name,500,330);x.font="26px Georgia";x.fillText(($("ipo").value||"My IPO prayer").slice(0,60),500,395);x.font="22px Georgia";let wish=($("wish").value||"May I be blessed with wisdom and patience.").slice(0,85);x.fillText(wish,500,450);x.font="22px Georgia";x.fillText("May auspiciousness be with you • शुभमस्तु",500,525);let a=document.createElement("a");a.download="ipo-aarthi-blessing.png";a.href=c.toDataURL("image/png");a.click();};
+$("vahanaToggle").onchange=()=>{$("vahanaIcon").style.animationPlayState=$("vahanaToggle").checked?"running":"paused";};
+</script>
+</body></html>
